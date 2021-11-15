@@ -5,6 +5,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { MaterialModule } from '../../pages/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AuthRoutingModule,
     MaterialModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers: [CookieService]
 })
 export class AuthModule { }
