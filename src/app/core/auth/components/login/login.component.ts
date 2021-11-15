@@ -6,7 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Data } from '../../interfaces/interfaces';
 import { AuthService } from '../../services/auth.service';
+import { TokenService } from '../../services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private tokenService: TokenService
   ) {}
 
   ngOnInit(): void {
@@ -32,7 +35,8 @@ export class LoginComponent implements OnInit {
   login() {
     //console.log(this.form.value);
     this.authService.login(this.form.value).subscribe(
-      (data) => {
+      (data: Data) => {
+        this.tokenService.saveToken(data.access_token);
         this.router.navigate(['admin']);
       }
     );
