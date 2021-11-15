@@ -5,22 +5,42 @@
       Ingrese sus credenciales de acceso para ingresar al sistema
     </mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content>
-    <form action="">
+  <form [formGroup]="form" (submit)="login()">
+    <mat-card-content>
       <mat-form-field appearance="standard" class="example-full-width">
         <mat-label>Email </mat-label>
-        <input matInput placeholder="example@example.com" />
+        <input
+          type="email"
+          matInput
+          placeholder="example@example.com"
+          formControlName="email"
+        />
+        <mat-error *ngIf="emailNoValido">El email es requerido</mat-error>
+        <mat-error *ngIf="emailInvalid">El email es invalido</mat-error>
       </mat-form-field>
       <br />
       <mat-form-field appearance="standard" class="example-full-width">
         <mat-label>Contraseña</mat-label>
-        <input matInput placeholder="***********" />
+        <input
+          matInput
+          placeholder="***********"
+          type="password"
+          formControlName="password"
+        />
+        <mat-error *ngIf="passwordNoValido">El password es requerido</mat-error>
       </mat-form-field>
-    </form>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button color="primary">Login</button>
-    <button mat-button>Registrarse</button>
-  </mat-card-actions>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="form.invalid"
+      >
+        Login
+      </button>
+      <!-- <button mat-raised-button>Registrarse</button> -->
+    </mat-card-actions>
+  </form>
 </mat-card>
 |
