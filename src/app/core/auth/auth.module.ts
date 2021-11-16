@@ -6,11 +6,13 @@ import { LoginComponent } from './components/login/login.component';
 import { MaterialModule } from '../../pages/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,

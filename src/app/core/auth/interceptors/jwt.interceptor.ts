@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 import { TokenService } from '../services/token.service';
 
 @Injectable()
-export class JwtInterceptorInterceptor implements HttpInterceptor {
+export class JwtInterceptor implements HttpInterceptor {
   constructor(private tokenService: TokenService) {}
 
   intercept(
